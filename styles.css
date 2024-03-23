@@ -1,0 +1,57 @@
+body, html {
+  height: 100vh;
+  margin: 0;
+  font-family: cnr;
+}
+
+@font-face {
+  font-family: "cnr";
+  src: url(/cnr.otf);
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  height: 100vh;
+}
+
+.header {
+  background-color: #869D7A;
+  position: relative;
+  box-shadow: 0px 0px 20px 10px #BBE1C3;
+  color: #ededed;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 80px 0px 80px;
+  align-items: center;
+}
+
+.add {
+  font-family: cnr;
+  background-color: #91785D;
+  color: #ededed;
+  border: 1px solid black;
+  box-shadow: 0px 0px 16px 1px #5e6d57;
+  height: 6vh;
+  width: 10vw;
+  border-radius: 16px;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.main {
+  background-color: #A7CDBD;
+}
+
+.cards {
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+}
+
+.card {
+  border-radius: 16px;
+  height: 280px;
+  width: 250px;
+  background-color: black;
+}
