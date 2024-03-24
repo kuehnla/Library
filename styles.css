@@ -30,7 +30,7 @@ body, html {
   font-family: cnr;
   background-color: #91785D;
   color: #ededed;
-  border: 1px solid black;
+  border: 1px solid #d2d2d2;
   box-shadow: 0px 0px 16px 1px #5e6d57;
   height: 6vh;
   width: 10vw;
@@ -44,14 +44,62 @@ body, html {
 }
 
 .cards {
-  padding: 40px;
+  padding: 40px 0px 0px 80px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+  grid-template-columns: repeat(auto-fit, 275px);
+  row-gap: 40px;
 }
 
 .card {
   border-radius: 16px;
   height: 280px;
   width: 250px;
-  background-color: black;
+  background-color: #91785D;
+  border: 1px solid #d2d2d2;
+  box-shadow: 0px 0px 16px 1px #5e6d57;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
 }
+
+.title {
+  text-align: center;
+}
+
+.author, .pages {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.author p, .pages p {
+  font-size: 14px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.remove,
+.read {
+  width: 70%;
+  height: 10%;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 0px 16px 1px #5e6d57;
+}
+
+.remove:hover,
+.read:hover,
+.add:hover {
+  cursor: pointer;
+}
+
