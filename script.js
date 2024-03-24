@@ -1,24 +1,21 @@
 const myLibrary = [];
-myLibrary.push(new Book("Turbo 3", "Turbo Johnson", 22, true));
-display(myLibrary[0]);
 
-myLibrary.push(new Book("Turbo 4", "Turbo Johnson", 12, true));
-display(myLibrary[1]);
-myLibrary.push(new Book("Turbo 2: The Squeakquel", "Turbo Johnson", 427, true));
-display(myLibrary[2]);
-myLibrary.push(new Book("Turbo 4: 2", "Turbo Johnson", 697, true));
-display(myLibrary[3]);
-myLibrary.push(new Book("Turbo 5", "Turbo Johnson", 12, true));
-display(myLibrary[4]);
-myLibrary.push(new Book("Turbo 4: 2: 2", "Turbo Johnson", 11, true));
-display(myLibrary[5]);
-myLibrary.push(new Book("Turbo 4: 2: 1.5", "Turbo Johnson", 990, true));
-display(myLibrary[6]);
-myLibrary.push(new Book("Turbo 2: Reloaded", "Turbo Johnson", 1500, true));
-display(myLibrary[7]);
-myLibrary.push(new Book("Lord of the Rings: Lord of the Ring: Reloaded", "Turbo Johnson", 1500, true));
-display(myLibrary[8]);
-myLibrary.push(new Book("Lord of the Rings: Lord of the Ring: Reloaded", "Turbo Johnson", 1500, true));
+const dialog = document.querySelector("dialog");
+
+const addBtn = document.querySelector(".add");
+addBtn.addEventListener("click", function(e) {
+  dialog.showModal();
+  const close = document.querySelector("#close");
+  close.addEventListener("click", () => dialog.close());
+});
+
+const submit = document.querySelector("#submit");
+submit.addEventListener("click", function(e) {
+  e.preventDefault();
+  addBookToLibrary();
+});
+
+
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -27,14 +24,21 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-function addBookToLibrary(book) {
-  myLibrary.push(book);
+function addBookToLibrary() {
+  const title = document.querySelector("#titleIn").value;
+  const author = document.querySelector("#authorIn").value;
+  const pages = document.querySelector("#pageIn").value;
+  const read = document.querySelector("#readIn").checked;
+  myLibrary.push(new Book(title, author, pages, read == true ? "Read" : "Not read"));
+  display(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
+  dialog.close();
 }
 
-function display(book) {
+function display(book, index) {
   const card = document.createElement("div"); // create card container
   card.setAttribute("class", "card");
-  card.setAttribute("id", myLibrary.indexOf(book));
+  card.setAttribute("id", "i" + String(index));
+  console.log(index);
   const title = document.createElement("div"); // create title container
   title.setAttribute("class", "title");
   const titleText = document.createElement("h3");
@@ -63,10 +67,19 @@ function display(book) {
   const readBtn = document.createElement("button");
   removeBtn.setAttribute("class", "remove");
   readBtn.setAttribute("class", "read");
-  removeBtn.setAttribute("id", myLibrary.indexOf(book)); // set ids to arr index
-  readBtn.setAttribute("id", myLibrary.indexOf(book));
   removeBtn.textContent = "Remove";
-  readBtn.textContent = "Read";
+  readBtn.textContent = book.read;
+
+  const cards = document.querySelector(".cards");
+
+  removeBtn.addEventListener("click", function(e) {
+    cards.removeChild(document.querySelector("#i" + index));
+    myLibrary[index] = null;
+  });
+
+  readBtn.addEventListener("click", function(e) {
+    readBtn.textContent = readBtn.textContent == "Read" ? "Not read" : "Read";
+  });
 
   card.appendChild(title);
   card.appendChild(author);
@@ -74,7 +87,6 @@ function display(book) {
   card.appendChild(removeBtn);
   card.appendChild(readBtn);
 
-  const cards = document.querySelector(".cards");
-  console.log(cards.className);
   cards.appendChild(card);
+  console.log(card);
 }

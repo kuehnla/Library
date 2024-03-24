@@ -14,24 +14,32 @@
       <button class="add">+ Add</button>
     </div>
     <div class="main">
-      <div class="cards">
-        <div class="card">
-          <div class="title">
-            <h3>Turbo 2</h3>
-          </div>
-          <div class="author">
-            <h4>Author:</h4>
-            <p>Turbo Johnson</p>
-          </div>
-          <div class="pages">
-            <h4>Pages:</h4>
-            <p>13</p>
-          </div>
-          <button class="remove">Remove</button>
-          <button class="read">Not Read</button>
-        </div>
-      </div>
+      <div class="cards"></div>
     </div>
   </div>
 </body>
+<dialog>
+  <img src="/close-box.svg" id="close" autofocus>
+  <form id="form" name="form" method="dialog">
+    <div>
+      <label class="titleIn" for="titleIn">Book Title</label>
+      <input type="text" id="titleIn" name="titleIn">
+    </div>
+    <div>
+      <label class="authorIn" for="authorIn">Author</label>
+      <input type="text" id="authorIn" name="authorIn">
+    </div>
+    <div>
+      <label class="pageIn" for="pageIn">Pages</label>
+      <input type="number" id="pageIn" name="pageIn">
+    </div>
+    <div>
+      <label class="readIn" for="readIn">Read</label>
+      <input type="checkbox" id="readIn" name="readIn">
+    </div>
+    <div class="submit">
+      <input name="submit" id="submit" type="submit">
+    </div>
+  </form>
+</dialog>
 </html>
